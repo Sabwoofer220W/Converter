@@ -1,0 +1,55 @@
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+
+				const url = new URL(document.location);
+			const searchParams = url.searchParams;
+			searchParams.delete("UpdatTheCourse"); // удалить параметр "UpdatTheCourse"
+			window.history.pushState({}, '', url.toString());
+    }
+</script>
+<!DOCTYPE html>
+	<html>
+
+		<head>
+			<meta charset="UTF-8">
+		<title>Converter</title>
+		<link rel="stylesheet" type="text/css" href="./public/css/index.css">
+		<link rel="stylesheet" type="text/css" href="./public/css/adaptive.css">
+		</head>
+		<body>
+      <div class="head">
+				<form action="/" method="get" style="padding:10px;">
+					<input type="hidden" name="UpdatTheCourse" value="true">
+					<input type="submit" value="Обновить курс" class="ContentFormFormBut">
+				</form>
+			</div>
+      <div class="content">
+        <div class="contentUSDblock">
+          <p class="contentUSDblockTitle">USD</p>
+          <div class="contentUSDblockInputBox">
+            <input type="number" name="" min="1" max="999999999" value="100" maxlength="10" class="contentInput" id="RUBtoUSD">
+            <div class="contentUSDblockInputBoxCourse" id="RUBtoUSDText"> 1 RUB = 0.001 USD </div>
+          </div>
+        </div>
+        <div class="contentIcon">
+          <img src="./public/img/convert-icon.svg" alt="convert" width="130px" height="130px">
+        </div>
+        <div class="contentRUBblock">
+          <p class="contentUSDblockTitle">RUB</p>
+          <div class="contentUSDblockInputBox">
+            <input type="number" min="1" max="999999999" name="" value="" maxlength="10" class="contentInput" id="USDtoRUB">
+            <div class="contentUSDblockInputBoxCourse" > 1 USD = <%= ValueEval %> RUB </div>
+          </div>
+          <div class="contentRUBblockDateText">Данные за <%= DateEval %></div>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </body>
+<script src="./public/js/calculations.js"></script>
+<script type="text/javascript">
+	RUBtoUSD(<%= ValueEval %>);
+	RUBtoUSDCal(<%= ValueEval %>);
+	Start(<%= ValueEval %>)
+</script>
+    </html>
