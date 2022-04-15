@@ -12,5 +12,6 @@ npm install
 ``` console 
   nodemon index
 ```  
+В браузере вводим http://localhost:5000/  
 Дизайн:
 ![Image text](https://github.com/Sabwoofer220W/Converter/blob/master/ex1.png)
